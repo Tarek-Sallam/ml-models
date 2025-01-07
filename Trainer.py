@@ -6,7 +6,7 @@ class Trainer:
     
     def train(self, X, y, epochs):
         for epoch in range(epochs):
-            y_pred = self.model.forward(X)
+            y_pred = self.model(X)
             loss = self.loss(y_pred, y)
             loss_grads = self.loss.grads(y_pred, y)
             grads = self.model.grads(X, loss_grads)

@@ -1,15 +1,21 @@
 import numpy as np
 
 class LogisticRegression:
+    def __call__(self, X):
+        ''' Moves through a forward pass of the algorithm.
+            Args: 
+                X (np.array(shape=(n,m)): A matrix of n rows of training examples with m feature columns
+            Returns:
+                np.array(shape=(n)): An output probability of classifying a 1 for each training example
+                    '''
+        linear = np.dot(X, self.weights) + self.bias
+        return 1 / (1 + np.e**(-linear))
+    
     def __init__(self, input_dim = 1):
         self.weights = np.random.rand(input_dim)
         self.bias = np.random.rand(1)
         self.input_dim = input_dim
 
-    def forward(self, X):
-        linear = np.dot(X, self.weights) + self.bias
-        return 1 / (1 + np.e**(-linear))
-    
     def get_params(self):
         return np.concatenate((self.weights, self.bias))
     
