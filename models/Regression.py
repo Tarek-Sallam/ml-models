@@ -1,12 +1,15 @@
 import numpy as np
 
 class LinearRegression:
-    def __init__(self, input_dim = 1):
-        self.weights = np.zeros(input_dim)
+    def __init__(self, input_dim = 1, degree=1):
+        self.weights = np.zeros(input_dim*degree)
         self.bias = np.zeros(1)
+        self.degree = degree
+        self.input_dim = input_dim
 
     def forward(self, X):
-        return np.dot(X, self.weights) + self.bias
+        X_transformed = np.hstack([X**i for i in range(1, self.degree+1)])
+        return np.dot(X_transformed, self.weights) + self.bias
     
     def get_params(self):
         return np.concatenate((self.weights, self.bias))
@@ -17,5 +20,6 @@ class LinearRegression:
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
     def grads(self, X, loss_grad):
-        return np.concatenate((np.dot(X.T, loss_grad), [np.sum(loss_grad)]))
-
+        X_transformed = np.hstack([X**i for i in range(1, self.degree+1)])
+        return np.concatenate((np.dot(X_transformed.T, loss_grad), [np.sum(loss_grad)]))
+    
