@@ -22,4 +22,4 @@ class LinearRegression:
     def grads(self, X, loss_grad):
         X_transformed = np.hstack([X**i for i in range(1, self.degree+1)])
         return np.concatenate((np.dot(X_transformed.T, loss_grad), [np.sum(loss_grad)]))
-    
+        
