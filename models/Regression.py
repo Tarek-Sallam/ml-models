@@ -2,8 +2,8 @@ import numpy as np
 
 class LinearRegression:
     def __init__(self, input_dim = 1, degree=1):
-        self.weights = np.zeros(input_dim*degree)
-        self.bias = np.zeros(1)
+        self.weights = np.random.rand(input_dim*degree)
+        self.bias = np.random.rand(1)
         self.degree = degree
         self.input_dim = input_dim
 
