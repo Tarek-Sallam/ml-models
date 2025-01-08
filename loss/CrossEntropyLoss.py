@@ -6,3 +6,7 @@ class BinaryCrossEntropyLoss:
     
     def grads(self, y_pred, y):
         return  (-1/y.shape[0]) * (y - y_pred)
+    
+class CategoricalCrossEntropyLoss:
+    def __call__(self, y_pred, y):
+        return np.log(y_pred)[np.arange(len(y)), y]

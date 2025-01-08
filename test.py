@@ -1,7 +1,7 @@
 from Trainer import Trainer
 from optimizers.SGDOptimizer import SGDOptimizer
 from models.LogisticRegression import LogisticRegression
-from loss.BinaryCrossEntropyLoss import BinaryCrossEntropyLoss
+from loss.CrossEntropyLoss import BinaryCrossEntropyLoss
 import numpy as np
 import matplotlib.pyplot as plt
 
