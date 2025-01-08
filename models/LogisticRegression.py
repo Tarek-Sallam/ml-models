@@ -55,4 +55,4 @@ class SoftMaxRegression:
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
     def grads(self, X, loss_grad):
-        pass
+        return np.matmul(loss_grad.T, X).T
