@@ -25,7 +25,9 @@ class LogisticRegression:
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
     def grads(self, X, loss_grad):
-        return np.concatenate((np.dot(X.T, loss_grad), [np.sum(loss_grad)]))
+        y_pred = self(X)
+        adjusted_loss_grads = loss_grad * (y_pred - y_pred**2) 
+        return np.concatenate((np.dot(X.T, adjusted_loss_grads), [np.sum(adjusted_loss_grads)]))
     
 class SoftMaxRegression:
     def __call__(self, X):
