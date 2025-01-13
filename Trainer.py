@@ -12,8 +12,8 @@ class Trainer:
         for epoch in range(epochs):
             y_pred = self.model(X)
             loss = self.loss(y_pred, y)
-            loss_grads = self.loss.grads(y_pred, y)
-            grads = self.model.grads(X, loss_grads)
+            model_grads = self.model.grads(X)
+            grads = self.loss.grads(y_pred, y, model_grads)
             params = self.model.get_params()
             self.optimizer.step(params, grads)
             self.model.set_params(params)
