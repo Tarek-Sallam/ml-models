@@ -57,5 +57,5 @@ class SoftMaxRegression:
         self.weights = params[:split_idx].reshape(self.weights.shape)
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
-    def grads(self, X, loss_grad):
+    def grads(self, X):
         return np.matmul(loss_grad.T, X).T
