@@ -24,10 +24,11 @@ class LogisticRegression:
         self.weights = params[:split_idx].reshape(self.weights.shape)
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
-    def grads(self, X, loss_grad):
+    def grads(self, X):
         y_pred = self(X)
-        adjusted_loss_grads = loss_grad * (y_pred - y_pred**2) 
-        return np.concatenate((np.dot(X.T, adjusted_loss_grads), [np.sum(adjusted_loss_grads)]))
+        jacobian = (y_pred * (1 - y_pred)) * X.T
+        jacobian = np.reshape(jacobian, X.shape)
+        return np.hstack((jacobian, np.reshape(y_pred * (1 - y_pred), (y_pred.shape[0], 1))))
     
 class SoftMaxRegression:
     def __call__(self, X):
