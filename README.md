@@ -7,7 +7,7 @@ All the model code is under **./models**
 <br>All of the loss code is under **./loss**
 
 ### EXAMPLES:
-All examples with generated and visuals that utilize the functions and classes I have built are under **./examples**
+All examples with generated data and visuals that utilize the functions and classes I have built are under **./examples**
 
 ### Derivations :
 <br>
