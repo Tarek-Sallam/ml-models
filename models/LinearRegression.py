@@ -25,6 +25,6 @@ class LinearRegression:
         self.weights = params[:split_idx].reshape(self.weights.shape)
         self.bias = params[split_idx:].reshape(self.bias.shape)
 
-    def grads(self, X):
+    def grads(self, X, y, y_pred,):
         X_transformed = np.hstack([X**i for i in range(1, self.degree+1)])
         return np.hstack((X_transformed, np.reshape(np.ones(X.shape[0]), (X.shape[0], 1))))

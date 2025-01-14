@@ -11,9 +11,9 @@ class Trainer:
             y = np.array([self.model.label_mapping[val] for val in y])
         for epoch in range(epochs):
             y_pred = self.model(X)
-            loss = self.loss(y_pred, y)
-            model_grads = self.model.grads(X)
-            grads = self.loss.grads(y_pred, y, model_grads)
+            loss = self.loss(y, y_pred)
+            model_grads = self.model.grads(X, y, y_pred)
+            grads = self.loss.grads(X, y, y_pred, model_grads)
             params = self.model.get_params()
             self.optimizer.step(params, grads)
             self.model.set_params(params)
