@@ -13,4 +13,4 @@ class CategoricalCrossEntropyLoss:
     
     def grads(self, X, y, y_pred, model_grads):
         y_pred = y_pred[np.arange(len(y)), y]
-        return np.dot(model_grads, - 1 / y_pred)
+        return np.dot(model_grads.T, (-1) / y_pred)
