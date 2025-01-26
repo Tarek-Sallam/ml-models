@@ -7,6 +7,7 @@ class SupportVectorMachine:
     def __init__(self, kernel):
         self.kernel = kernel
         self.alphas = None
+        self.support_vectors = None
 
     def get_params(self):
         return self.alphas
