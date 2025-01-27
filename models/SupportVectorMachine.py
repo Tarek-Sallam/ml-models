@@ -2,18 +2,15 @@ import numpy as np
 
 class SupportVectorMachine:
     def __call__(self, X, y):
-        pass
-        
-    def __init__(self, kernel):
+        if (self.alphas):
+            bias = 1; # edit later
+            np.sum(self.alphas * self.support_labels * self.kernel(self.support_vectors, X)) + self.bias
+
+    def __init__(self, input_dim, kernel):
         self.kernel = kernel
+        self.input_dim = input_dim
         self.alphas = None
         self.support_vectors = None
-
-    def get_params(self):
-        return self.alphas
+        self.support_labels = None
     
-    def set_params(self, params):
-        self.alphas = params
 
-    def grads(self):
-        pass

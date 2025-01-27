@@ -6,7 +6,6 @@ class SVMDualForm:
     def __init__(self, C):
         self.C = C
 
-    def grads(alphas, y):
-        np.sum()
-
-    
+    def grads(self, X, y, kernel):
+        kernel(X.T, X.T).T
+        

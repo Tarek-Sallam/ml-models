@@ -1,6 +1,6 @@
 import numpy as np
 
-class Trainer:
+class GLMTrainer:
     def __init__(self, model, loss, optimizer):
         self.model = model
         self.loss = loss
